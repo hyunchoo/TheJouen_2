@@ -14,6 +14,13 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     @IBOutlet var myMap: MKMapView!
     let myLoc = CLLocationManager()   //위치정보를 받을 변수
     
+    var tt:Timer?
+    let ts = #selector(qwer)
+    
+    @objc func qwer(){ // 1초마다 실행 시킬 함수
+        myLoc.startUpdatingLocation() // 내 위치 정보를 받기
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,8 +70,12 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
             self.addrLB.text = addrTT
    
         })
-        self.titleLB.text = title
-        setPonit(title: title, subTitle: addrTT, pLoc: cc2d)
+       titleLB.text = title
+        
+        if title != "현위치" {
+            setPonit(title: title, subTitle: addrTT, pLoc: cc2d)
+        }
+       
         
     }
     
@@ -88,6 +99,10 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     
     
     @IBAction func sgChange(_ sender: UISegmentedControl) {
+        
+        tt?.invalidate()  // 타이머 초기화 (1초마다 현위치 화명 갱신 멈춤)
+        tt = nil
+        
         print(sender.selectedSegmentIndex)  // 선택한 세그먼트 인덱스 0,1,2
         
         if sender.selectedSegmentIndex == 1 { //해운대 선택
@@ -101,8 +116,14 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
             //addrLB.text = "서울특별시 도봉구 도봉동 87"
         }else if sender.selectedSegmentIndex == 0 { // 현위치 선택
             
-            myLoc.startUpdatingLocation() // 내 위치 정보를 받기
-            self.titleLB.text = "현위치"
+          //  myLoc.startUpdatingLocation() // 내 위치 정보를 받기
+          //  self.titleLB.text = "현위치"
+            
+            tt = Timer.scheduledTimer(timeInterval: 1,
+                                      target: self,
+                                      selector: ts,
+                                      userInfo: nil,
+                                      repeats: true)
         }
         
     }
