@@ -8,11 +8,27 @@
 import UIKit
 
 class DetailController: UIViewController {
-
+    
+    var ttt = -1
+    
+    
+   
+    @IBOutlet var detailTF: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        print("ttt: \(ttt)")
+        detailTF.text = txtArr[ttt]
+    }
+    
+    
+    
+    
+    @IBAction func updateGO(_ sender: Any) {
+        
+        txtArr[ttt] = detailTF.text! 
+        navigationController?.popViewController(animated: true)
     }
     
 

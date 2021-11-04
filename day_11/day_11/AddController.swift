@@ -9,13 +9,24 @@ import UIKit
 
 class AddController: UIViewController {
 
+    @IBOutlet var addTF: UITextField!
+    
+    @IBOutlet var imgSG: UISegmentedControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func addGo(_ sender: Any) {
+        
+        txtArr.append(addTF.text!)
+        imgArr.append(newImgArr[imgSG.selectedSegmentIndex])
+        
+        navigationController?.popViewController(animated: true) 
+    }
+    
     /*
     // MARK: - Navigation
 
