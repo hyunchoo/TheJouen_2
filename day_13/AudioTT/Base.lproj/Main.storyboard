@@ -90,8 +90,11 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="vaG-wq-eES">
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="vaG-wq-eES">
                                                 <rect key="frame" x="358" y="0.0" width="364" height="37"/>
+                                                <connections>
+                                                    <action selector="volumeChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="RZb-2K-xDw"/>
+                                                </connections>
                                             </slider>
                                         </subviews>
                                     </stackView>
@@ -106,6 +109,9 @@
                                             </label>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0jE-nS-Ywg">
                                                 <rect key="frame" x="360" y="0.0" width="362" height="36"/>
+                                                <connections>
+                                                    <action selector="soundChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="qQs-vY-nZv"/>
+                                                </connections>
                                             </switch>
                                         </subviews>
                                     </stackView>
@@ -118,6 +124,9 @@
                                                 <buttonConfiguration key="configuration" style="plain" title="녹음시작">
                                                     <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="recordGO:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Hls-F3-iey"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N7i-FQ-9UU">
                                                 <rect key="frame" x="360" y="0.0" width="360" height="50"/>
@@ -144,6 +153,8 @@
                         <outlet property="currLB" destination="8l7-31-aQa" id="6uM-Yf-L6S"/>
                         <outlet property="endLB" destination="Zhh-FK-eKd" id="emK-1G-idb"/>
                         <outlet property="myProgress" destination="bwA-tc-8u8" id="s2y-SX-vjg"/>
+                        <outlet property="recordLB" destination="N7i-FQ-9UU" id="ZL9-Ps-VcM"/>
+                        <outlet property="statusLB" destination="d56-5A-sGk" id="RvY-cW-DVY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
